@@ -7,8 +7,8 @@ package apm_test
 import (
 	"log"
 
-	"github.com/e-XpertSolutions/f5-rest-client/f5"
-	"github.com/e-XpertSolutions/f5-rest-client/f5/apm"
+	"github.com/robiball/f5-rest-client/f5"
+	"github.com/robiball/f5-rest-client/f5/apm"
 )
 
 func Example() {
