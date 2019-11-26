@@ -4,7 +4,7 @@
 
 package ltm
 
-import "github.com/e-XpertSolutions/f5-rest-client/f5"
+import "github.com/robiball/f5-rest-client/f5"
 
 type NodeList struct {
 	Items    []Node `json:"items"`
@@ -23,7 +23,8 @@ type Node struct {
 		Autopopulate  string `json:"autopopulate,omitempty"`
 		DownInterval  int    `json:"downInterval,omitempty"`
 		Interval      string `json:"interval,omitempty"`
-	} `json:"fqdn,omitempty"`
+		Name          string `json:"tmName,omitempty"`
+  } `json:"fqdn,omitempty"`
 	FullPath   string `json:"fullPath,omitempty" pretty:",expanded"`
 	Generation int    `json:"generation,omitempty" pretty:",expanded"`
 	Kind       string `json:"kind,omitempty" pretty:",expanded"`
