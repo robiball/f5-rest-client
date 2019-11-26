@@ -4,7 +4,7 @@
 
 package net
 
-import "github.com/e-XpertSolutions/f5-rest-client/f5"
+import "github.com/robiball/f5-rest-client/f5"
 
 // A VlanList holds a list of Vlan.
 type VlanList struct {

@@ -4,7 +4,7 @@
 
 package cm
 
-import "github.com/e-XpertSolutions/f5-rest-client/f5"
+import "github.com/robiball/f5-rest-client/f5"
 
 // A DeviceList holds a list of Device.
 type DeviceList struct {
