@@ -44,7 +44,7 @@ func (r *MonitorRealServerResource) ListAll() (*MonitorRealServerConfigList, err
 
 func (r *MonitorRealServerResource) Get(id string) (*MonitorRealServerConfig, error) {
 	var item MonitorRealServerConfig
-	if err := r.c.ReadQuery(BasePath+MonitorRealServerEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorRealServerEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

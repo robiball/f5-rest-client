@@ -44,7 +44,7 @@ func (r *MonitorWAPResource) ListAll() (*MonitorWAPConfigList, error) {
 
 func (r *MonitorWAPResource) Get(id string) (*MonitorWAPConfig, error) {
 	var item MonitorWAPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorWAPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorWAPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

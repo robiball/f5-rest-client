@@ -44,7 +44,7 @@ func (r *MonitorTCPHalfOpenResource) ListAll() (*MonitorTCPHalfOpenConfigList, e
 
 func (r *MonitorTCPHalfOpenResource) Get(id string) (*MonitorTCPHalfOpenConfig, error) {
 	var item MonitorTCPHalfOpenConfig
-	if err := r.c.ReadQuery(BasePath+MonitorTCPHalfOpenEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorTCPHalfOpenEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

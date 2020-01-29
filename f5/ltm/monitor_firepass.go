@@ -46,7 +46,7 @@ func (r *MonitorFirepassResource) ListAll() (*MonitorFirepassConfigList, error) 
 
 func (r *MonitorFirepassResource) Get(id string) (*MonitorFirepassConfig, error) {
 	var item MonitorFirepassConfig
-	if err := r.c.ReadQuery(BasePath+MonitorFirepassEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorFirepassEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

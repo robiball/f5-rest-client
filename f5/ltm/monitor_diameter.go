@@ -45,7 +45,7 @@ func (r *MonitorDiameterResource) ListAll() (*MonitorDiameterConfigList, error) 
 
 func (r *MonitorDiameterResource) Get(id string) (*MonitorDiameterConfig, error) {
 	var item MonitorDiameterConfig
-	if err := r.c.ReadQuery(BasePath+MonitorDiameterEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorDiameterEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

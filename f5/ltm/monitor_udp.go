@@ -52,7 +52,7 @@ func (r *MonitorUDPResource) ListAll() (*MonitorUDPConfigList, error) {
 
 func (r *MonitorUDPResource) Get(id string) (*MonitorUDPConfig, error) {
 	var item MonitorUDPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorUDPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorUDPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

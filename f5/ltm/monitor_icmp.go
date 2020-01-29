@@ -49,7 +49,7 @@ func (r *MonitorICMPResource) ListAll() (*MonitorICMPConfigList, error) {
 
 func (r *MonitorICMPResource) Get(id string) (*MonitorICMPConfig, error) {
 	var item MonitorICMPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorICMPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorICMPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

@@ -43,7 +43,7 @@ func (r *MonitorExternalResource) ListAll() (*MonitorExternalConfigList, error) 
 
 func (r *MonitorExternalResource) Get(id string) (*MonitorExternalConfig, error) {
 	var item MonitorExternalConfig
-	if err := r.c.ReadQuery(BasePath+MonitorExternalEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorExternalEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

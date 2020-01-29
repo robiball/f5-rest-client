@@ -47,7 +47,7 @@ func (r *MonitorWMIResource) ListAll() (*MonitorWMIConfigList, error) {
 
 func (r *MonitorWMIResource) Get(id string) (*MonitorWMIConfig, error) {
 	var item MonitorWMIConfig
-	if err := r.c.ReadQuery(BasePath+MonitorWMIEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorWMIEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil
