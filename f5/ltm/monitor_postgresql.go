@@ -45,7 +45,7 @@ func (r *MonitorPostgreSQLResource) ListAll() (*MonitorPostgreSQLConfigList, err
 
 func (r *MonitorPostgreSQLResource) Get(id string) (*MonitorPostgreSQLConfig, error) {
 	var item MonitorPostgreSQLConfig
-	if err := r.c.ReadQuery(BasePath+MonitorPostgreSQLEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorPostgreSQLEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

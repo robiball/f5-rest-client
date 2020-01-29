@@ -45,7 +45,7 @@ func (r *MonitorModuleScoreResource) ListAll() (*MonitorModuleScoreConfigList, e
 
 func (r *MonitorModuleScoreResource) Get(id string) (*MonitorModuleScoreConfig, error) {
 	var item MonitorModuleScoreConfig
-	if err := r.c.ReadQuery(BasePath+MonitorModuleScoreEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorModuleScoreEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

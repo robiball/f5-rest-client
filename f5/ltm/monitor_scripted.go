@@ -44,7 +44,7 @@ func (r *MonitorScriptedResource) ListAll() (*MonitorScriptedConfigList, error) 
 
 func (r *MonitorScriptedResource) Get(id string) (*MonitorScriptedConfig, error) {
 	var item MonitorScriptedConfig
-	if err := r.c.ReadQuery(BasePath+MonitorScriptedEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorScriptedEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

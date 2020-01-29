@@ -45,7 +45,7 @@ func (r *MonitorFTPResource) ListAll() (*MonitorFTPConfigList, error) {
 
 func (r *MonitorFTPResource) Get(id string) (*MonitorFTPConfig, error) {
 	var item MonitorFTPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorFTPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorFTPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

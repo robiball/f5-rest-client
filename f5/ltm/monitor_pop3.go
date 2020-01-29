@@ -44,7 +44,7 @@ func (r *MonitorPOP3Resource) ListAll() (*MonitorPOP3ConfigList, error) {
 
 func (r *MonitorPOP3Resource) Get(id string) (*MonitorPOP3Config, error) {
 	var item MonitorPOP3Config
-	if err := r.c.ReadQuery(BasePath+MonitorPOP3Endpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorPOP3Endpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

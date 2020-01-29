@@ -44,7 +44,7 @@ func (r *MonitorNNTPResource) ListAll() (*MonitorNNTPConfigList, error) {
 
 func (r *MonitorNNTPResource) Get(id string) (*MonitorNNTPConfig, error) {
 	var item MonitorNNTPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorNNTPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorNNTPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

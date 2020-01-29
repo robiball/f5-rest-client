@@ -45,7 +45,7 @@ func (r *MonitorLDAPResource) ListAll() (*MonitorLDAPConfigList, error) {
 
 func (r *MonitorLDAPResource) Get(id string) (*MonitorLDAPConfig, error) {
 	var item MonitorLDAPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorLDAPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorLDAPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

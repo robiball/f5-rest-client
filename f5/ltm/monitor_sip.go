@@ -47,7 +47,7 @@ func (r *MonitorSIPResource) ListAll() (*MonitorSIPConfigList, error) {
 
 func (r *MonitorSIPResource) Get(id string) (*MonitorSIPConfig, error) {
 	var item MonitorSIPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorSIPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorSIPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

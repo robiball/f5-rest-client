@@ -42,7 +42,7 @@ func (r *MonitorVirtualLocationResource) ListAll() (*MonitorVirtualLocationConfi
 
 func (r *MonitorVirtualLocationResource) Get(id string) (*MonitorVirtualLocationConfig, error) {
 	var item MonitorVirtualLocationConfig
-	if err := r.c.ReadQuery(BasePath+MonitorVirtualLocationEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorVirtualLocationEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

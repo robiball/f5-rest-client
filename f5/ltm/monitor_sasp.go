@@ -42,7 +42,7 @@ func (r *MonitorSASPResource) ListAll() (*MonitorSASPConfigList, error) {
 
 func (r *MonitorSASPResource) Get(id string) (*MonitorSASPConfig, error) {
 	var item MonitorSASPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorSASPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorSASPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

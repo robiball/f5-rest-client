@@ -45,7 +45,7 @@ func (r *MonitorMySQLResource) ListAll() (*MonitorMySQLConfigList, error) {
 
 func (r *MonitorMySQLResource) Get(id string) (*MonitorMySQLConfig, error) {
 	var item MonitorMySQLConfig
-	if err := r.c.ReadQuery(BasePath+MonitorMySQLEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorMySQLEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

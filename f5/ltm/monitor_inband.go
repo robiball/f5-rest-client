@@ -41,7 +41,7 @@ func (r *MonitorInbandResource) ListAll() (*MonitorInbandConfigList, error) {
 
 func (r *MonitorInbandResource) Get(id string) (*MonitorInbandConfig, error) {
 	var item MonitorInbandConfig
-	if err := r.c.ReadQuery(BasePath+MonitorInbandEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorInbandEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

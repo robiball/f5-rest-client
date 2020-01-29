@@ -44,7 +44,7 @@ func (r *MonitorSMBResource) ListAll() (*MonitorSMBConfigList, error) {
 
 func (r *MonitorSMBResource) Get(id string) (*MonitorSMBConfig, error) {
 	var item MonitorSMBConfig
-	if err := r.c.ReadQuery(BasePath+MonitorSMBEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorSMBEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

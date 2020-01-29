@@ -42,7 +42,7 @@ func (r *MonitorSNMPDCABaseResource) ListAll() (*MonitorSNMPDCABaseConfigList, e
 
 func (r *MonitorSNMPDCABaseResource) Get(id string) (*MonitorSNMPDCABaseConfig, error) {
 	var item MonitorSNMPDCABaseConfig
-	if err := r.c.ReadQuery(BasePath+MonitorSNMPDCABaseEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorSNMPDCABaseEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

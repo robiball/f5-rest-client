@@ -53,7 +53,7 @@ func (r *MonitorDNSResource) ListAll() (*MonitorDNSConfigList, error) {
 
 func (r *MonitorDNSResource) Get(id string) (*MonitorDNSConfig, error) {
 	var item MonitorDNSConfig
-	if err := r.c.ReadQuery(BasePath+MonitorDNSEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorDNSEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

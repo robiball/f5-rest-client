@@ -31,7 +31,7 @@ func (r *MonitorSNMPDataResource) ListAll() (*MonitorSNMPDataConfigList, error) 
 
 func (r *MonitorSNMPDataResource) Get(id string) (*MonitorSNMPDataConfig, error) {
 	var item MonitorSNMPDataConfig
-	if err := r.c.ReadQuery(BasePath+MonitorSNMPDataEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorSNMPDataEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil
