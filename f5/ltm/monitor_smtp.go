@@ -44,7 +44,7 @@ func (r *MonitorSMTPResource) ListAll() (*MonitorSMTPConfigList, error) {
 
 func (r *MonitorSMTPResource) Get(id string) (*MonitorSMTPConfig, error) {
 	var item MonitorSMTPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorSMTPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorSMTPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

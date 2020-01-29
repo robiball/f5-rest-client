@@ -45,7 +45,7 @@ func (r *MonitorIMAPResource) ListAll() (*MonitorIMAPConfigList, error) {
 
 func (r *MonitorIMAPResource) Get(id string) (*MonitorIMAPConfig, error) {
 	var item MonitorIMAPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorIMAPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorIMAPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

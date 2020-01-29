@@ -31,7 +31,7 @@ func (r *MonitorMSSQLResource) ListAll() (*MonitorMSSQLConfigList, error) {
 
 func (r *MonitorMSSQLResource) Get(id string) (*MonitorMSSQLConfig, error) {
 	var item MonitorMSSQLConfig
-	if err := r.c.ReadQuery(BasePath+MonitorMSSQLEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorMSSQLEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

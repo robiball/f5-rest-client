@@ -51,7 +51,7 @@ func (r *MonitorTCPResource) ListAll() (*MonitorTCPConfigList, error) {
 
 func (r *MonitorTCPResource) Get(id string) (*MonitorTCPConfig, error) {
 	var item MonitorTCPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorTCPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorTCPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

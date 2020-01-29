@@ -44,7 +44,7 @@ func (r *MonitorRadiusAccountingResource) ListAll() (*MonitorRadiusAccountingCon
 
 func (r *MonitorRadiusAccountingResource) Get(id string) (*MonitorRadiusAccountingConfig, error) {
 	var item MonitorRadiusAccountingConfig
-	if err := r.c.ReadQuery(BasePath+MonitorRadiusAccountingEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorRadiusAccountingEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

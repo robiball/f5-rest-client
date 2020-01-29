@@ -49,7 +49,7 @@ func (r *MonitorTCPEchoResource) ListAll() (*MonitorTCPEchoConfigList, error) {
 
 func (r *MonitorTCPEchoResource) Get(id string) (*MonitorTCPEchoConfig, error) {
 	var item MonitorTCPEchoConfig
-	if err := r.c.ReadQuery(BasePath+MonitorTCPEchoEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorTCPEchoEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

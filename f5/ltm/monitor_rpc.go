@@ -45,7 +45,7 @@ func (r *MonitorRPCResource) ListAll() (*MonitorRPCConfigList, error) {
 
 func (r *MonitorRPCResource) Get(id string) (*MonitorRPCConfig, error) {
 	var item MonitorRPCConfig
-	if err := r.c.ReadQuery(BasePath+MonitorRPCEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorRPCEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

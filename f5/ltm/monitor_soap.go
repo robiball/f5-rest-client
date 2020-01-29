@@ -46,7 +46,7 @@ func (r *MonitorSOAPResource) ListAll() (*MonitorSOAPConfigList, error) {
 
 func (r *MonitorSOAPResource) Get(id string) (*MonitorSOAPConfig, error) {
 	var item MonitorSOAPConfig
-	if err := r.c.ReadQuery(BasePath+MonitorSOAPEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorSOAPEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil

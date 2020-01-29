@@ -46,7 +46,7 @@ func (r *MonitorOracleResource) ListAll() (*MonitorOracleConfigList, error) {
 
 func (r *MonitorOracleResource) Get(id string) (*MonitorOracleConfig, error) {
 	var item MonitorOracleConfig
-	if err := r.c.ReadQuery(BasePath+MonitorOracleEndpoint, &item); err != nil {
+	if err := r.c.ReadQuery(BasePath+MonitorOracleEndpoint+"/"+id, &item); err != nil {
 		return nil, err
 	}
 	return &item, nil
