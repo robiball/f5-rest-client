@@ -28,7 +28,6 @@ type MonitorHTTPSConfig struct {
 	Generation               int    `json:"generation,omitempty"`
 	Interval                 int    `json:"interval,omitempty"`
 	IPDscp                   int    `json:"ipDscp,omitempty"`
-	Key                      string `json:"key,omitempty"`
 	Kind                     string `json:"kind,omitempty"`
 	ManualResume             string `json:"manualResume,omitempty"`
 	Name                     string `json:"name,omitempty"`
