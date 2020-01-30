@@ -20,15 +20,21 @@ type MonitorHTTPSConfig struct {
 	AdaptiveSamplingTimespan int    `json:"adaptiveSamplingTimespan,omitempty"`
 	Cipherlist               string `json:"cipherlist,omitempty"`
 	Compatibility            string `json:"compatibility,omitempty"`
+	AppService               string `json:"appService,omitempty"`
+	DefaultsFrom             string `json:"defaultsFrom,omitempty"`
+	Description              string `json:"description,omitempty"`
 	Destination              string `json:"destination,omitempty"`
 	FullPath                 string `json:"fullPath,omitempty"`
 	Generation               int    `json:"generation,omitempty"`
 	Interval                 int    `json:"interval,omitempty"`
 	IPDscp                   int    `json:"ipDscp,omitempty"`
+	Key                      string `json:"key,omitempty"`
 	Kind                     string `json:"kind,omitempty"`
 	ManualResume             string `json:"manualResume,omitempty"`
 	Name                     string `json:"name,omitempty"`
 	Partition                string `json:"partition,omitempty"`
+	Recv                     string `json:"recv,omitempty"`
+	RecvDisable              string `json:"recvDisable,omitempty"`
 	Reverse                  string `json:"reverse,omitempty"`
 	SelfLink                 string `json:"selfLink,omitempty"`
 	Send                     string `json:"send,omitempty"`
