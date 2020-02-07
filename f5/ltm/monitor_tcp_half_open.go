@@ -13,6 +13,9 @@ type MonitorTCPHalfOpenConfigList struct {
 }
 
 type MonitorTCPHalfOpenConfig struct {
+	AppService   string `json:"appService,omitempty"`
+	DefaultsFrom string `json:"defaultsFrom,omitempty"`
+	Description  string `json:"description,omitempty"`
 	Destination  string `json:"destination,omitempty"`
 	FullPath     string `json:"fullPath,omitempty"`
 	Generation   int    `json:"generation,omitempty"`

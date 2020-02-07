@@ -13,17 +13,22 @@ type MonitorVirtualLocationConfigList struct {
 }
 
 type MonitorVirtualLocationConfig struct {
-	Debug       string `json:"debug,omitempty"`
-	FullPath    string `json:"fullPath,omitempty"`
-	Generation  int    `json:"generation,omitempty"`
-	Interval    int    `json:"interval,omitempty"`
-	Kind        string `json:"kind,omitempty"`
-	Name        string `json:"name,omitempty"`
-	Partition   string `json:"partition,omitempty"`
-	SelfLink    string `json:"selfLink,omitempty"`
-	TimeUntilUp int    `json:"timeUntilUp,omitempty"`
-	Timeout     int    `json:"timeout,omitempty"`
-	UpInterval  int    `json:"upInterval,omitempty"`
+	AppService   string `json:"appService,omitempty"`
+	Debug        string `json:"debug,omitempty"`
+	DefaultsFrom string `json:"defaultsFrom,omitempty"`
+	Description  string `json:"description,omitempty"`
+	Destination  string `json:"destination,omitempty"`
+	FullPath     string `json:"fullPath,omitempty"`
+	Generation   int    `json:"generation,omitempty"`
+	Interval     int    `json:"interval,omitempty"`
+	Kind         string `json:"kind,omitempty"`
+	Name         string `json:"name,omitempty"`
+	Partition    string `json:"partition,omitempty"`
+	Pool         string `json:"pool,omitempty"`
+	SelfLink     string `json:"selfLink,omitempty"`
+	TimeUntilUp  int    `json:"timeUntilUp,omitempty"`
+	Timeout      int    `json:"timeout,omitempty"`
+	UpInterval   int    `json:"upInterval,omitempty"`
 }
 
 const MonitorVirtualLocationEndpoint = "/monitor/virtual-location"

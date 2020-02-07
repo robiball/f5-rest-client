@@ -20,6 +20,9 @@ type MonitorDNSConfig struct {
 	AdaptiveLimit            int    `json:"adaptiveLimit,omitempty"`
 	AdaptiveSamplingTimespan int    `json:"adaptiveSamplingTimespan,omitempty"`
 	AnswerContains           string `json:"answerContains,omitempty"`
+	AppService               string `json:"appService,omitempty"`
+	DefaultsFrom             string `json:"defaultsFrom,omitempty"`
+	Description              string `json:"description,omitempty"`
 	Destination              string `json:"destination,omitempty"`
 	FullPath                 string `json:"fullPath,omitempty"`
 	Generation               int    `json:"generation,omitempty"`
@@ -28,7 +31,9 @@ type MonitorDNSConfig struct {
 	ManualResume             string `json:"manualResume,omitempty"`
 	Name                     string `json:"name,omitempty"`
 	Partition                string `json:"partition,omitempty"`
+	Qname                    string `json:"qname,omitempty"`
 	Qtype                    string `json:"qtype,omitempty"`
+	Recv                     string `json:"recv,omitempty"`
 	Reverse                  string `json:"reverse,omitempty"`
 	SelfLink                 string `json:"selfLink,omitempty"`
 	TimeUntilUp              int    `json:"timeUntilUp,omitempty"`
