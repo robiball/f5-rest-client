@@ -13,16 +13,16 @@ type MonitorSASPConfigList struct {
 }
 
 type MonitorSASPConfig struct {
-  AppService       string `json:"appService,omitempty"`
-  DefaultsFrom     string `json:"defaultsFrom,omitempty"`
-  Description      string `json:"description,omitempty"`
-  Destination      string `json:"destination,omitempty"`
+	AppService       string `json:"appService,omitempty"`
+	DefaultsFrom     string `json:"defaultsFrom,omitempty"`
+	Description      string `json:"description,omitempty"`
+	Destination      string `json:"destination,omitempty"`
 	FullPath         string `json:"fullPath,omitempty"`
 	Generation       int    `json:"generation,omitempty"`
 	Interval         string `json:"interval,omitempty"`
 	Kind             string `json:"kind,omitempty"`
 	Mode             string `json:"mode,omitempty"`
-	MonInterval      int `json:"monInterval,omitempty"`
+	MonInterval      int    `json:"monInterval,omitempty"`
 	Name             string `json:"name,omitempty"`
 	Partition        string `json:"partition,omitempty"`
 	PrimaryAddress   string `json:"primaryAddress,omitempty"`
@@ -30,7 +30,7 @@ type MonitorSASPConfig struct {
 	SecondaryAddress string `json:"secondaryAddress,omitempty"`
 	SelfLink         string `json:"selfLink,omitempty"`
 	Service          string `json:"service,omitempty"`
-  Timeout          int    `json:"timeout,omitempty"`
+	Timeout          int    `json:"timeout,omitempty"`
 	TimeUntilUp      int    `json:"timeUntilUp,omitempty"`
 }
 

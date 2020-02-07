@@ -13,13 +13,13 @@ type MonitorSIPConfigList struct {
 }
 
 type MonitorSIPConfig struct {
-  AppService    string `json:"appService,omitempty"`
-  Cert          string `json:"cert,omitempty"`
+	AppService    string `json:"appService,omitempty"`
+	Cert          string `json:"cert,omitempty"`
 	Cipherlist    string `json:"cipherlist,omitempty"`
 	Compatibility string `json:"compatibility,omitempty"`
 	Debug         string `json:"debug,omitempty"`
-  DefaultsFrom  string `json:"defaultsFrom,omitempty"`
-  Description   string `json:"description,omitempty"`
+	DefaultsFrom  string `json:"defaultsFrom,omitempty"`
+	Description   string `json:"description,omitempty"`
 	Destination   string `json:"destination,omitempty"`
 	FullPath      string `json:"fullPath,omitempty"`
 	Filter        string `json:"filter,omitempty"`

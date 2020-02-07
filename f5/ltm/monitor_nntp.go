@@ -13,10 +13,10 @@ type MonitorNNTPConfigList struct {
 }
 
 type MonitorNNTPConfig struct {
-  AppService   string `json:"appService,omitempty"`
+	AppService   string `json:"appService,omitempty"`
 	Debug        string `json:"debug,omitempty"`
-  DefaultsFrom string `json:"defaultsFrom,omitempty"`
-  Description  string `json:"description,omitempty"`
+	DefaultsFrom string `json:"defaultsFrom,omitempty"`
+	Description  string `json:"description,omitempty"`
 	Destination  string `json:"destination,omitempty"`
 	FullPath     string `json:"fullPath,omitempty"`
 	Generation   int    `json:"generation,omitempty"`
@@ -24,7 +24,7 @@ type MonitorNNTPConfig struct {
 	Kind         string `json:"kind,omitempty"`
 	ManualResume string `json:"manualResume,omitempty"`
 	Name         string `json:"name,omitempty"`
-	Newsgroup         string `json:"newsgroup,omitempty"`
+	Newsgroup    string `json:"newsgroup,omitempty"`
 	Partition    string `json:"partition,omitempty"`
 	SelfLink     string `json:"selfLink,omitempty"`
 	TimeUntilUp  int    `json:"timeUntilUp,omitempty"`

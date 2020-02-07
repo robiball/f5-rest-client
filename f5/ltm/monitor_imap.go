@@ -14,8 +14,8 @@ type MonitorIMAPConfigList struct {
 
 type MonitorIMAPConfig struct {
 	Debug        string `json:"debug"`
-  DefaultsFrom string `json:"defaultsFrom,omitempty"`
-  Description  string `json:"description,omitempty"`
+	DefaultsFrom string `json:"defaultsFrom,omitempty"`
+	Description  string `json:"description,omitempty"`
 	Destination  string `json:"destination"`
 	Folder       string `json:"folder"`
 	FullPath     string `json:"fullPath"`

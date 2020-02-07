@@ -24,7 +24,7 @@ type Node struct {
 		DownInterval  int    `json:"downInterval,omitempty"`
 		Interval      string `json:"interval,omitempty"`
 		Name          string `json:"tmName,omitempty"`
-  } `json:"fqdn,omitempty"`
+	} `json:"fqdn,omitempty"`
 	FullPath   string `json:"fullPath,omitempty" pretty:",expanded"`
 	Generation int    `json:"generation,omitempty" pretty:",expanded"`
 	Kind       string `json:"kind,omitempty" pretty:",expanded"`

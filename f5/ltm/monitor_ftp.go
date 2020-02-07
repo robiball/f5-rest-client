@@ -13,15 +13,15 @@ type MonitorFTPConfigList struct {
 }
 
 type MonitorFTPConfig struct {
-  Adaptive                 string `json:"adaptive,omitempty"`
-  AdaptiveDivergenceType   string `json:"adaptiveDivergenceType,omitempty"`
-  AdaptiveDivergenceValue  int    `json:"adaptiveDivergenceValue,omitempty"`
-  AdaptiveLimit            int    `json:"adaptiveLimit,omitempty"`
-  AdaptiveSamplingTimespan int    `json:"adaptiveSamplingTimespan,omitempty"`
-  AppService               string `json:"appService,omitempty"`
+	Adaptive                 string `json:"adaptive,omitempty"`
+	AdaptiveDivergenceType   string `json:"adaptiveDivergenceType,omitempty"`
+	AdaptiveDivergenceValue  int    `json:"adaptiveDivergenceValue,omitempty"`
+	AdaptiveLimit            int    `json:"adaptiveLimit,omitempty"`
+	AdaptiveSamplingTimespan int    `json:"adaptiveSamplingTimespan,omitempty"`
+	AppService               string `json:"appService,omitempty"`
 	Debug                    string `json:"debug,omitempty,omitempty"`
-  DefaultsFrom             string `json:"defaultsFrom,omitempty"`
-  Description              string `json:"description,omitempty"`
+	DefaultsFrom             string `json:"defaultsFrom,omitempty"`
+	Description              string `json:"description,omitempty"`
 	Destination              string `json:"destination,omitempty,omitempty"`
 	Filename                 string `json:"filename,omitempty,omitempty"`
 	FullPath                 string `json:"fullPath,omitempty,omitempty"`

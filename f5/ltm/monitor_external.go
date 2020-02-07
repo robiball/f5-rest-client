@@ -13,10 +13,10 @@ type MonitorExternalConfigList struct {
 }
 
 type MonitorExternalConfig struct {
-  AppService   string `json:"appService,omitempty"`
+	AppService   string `json:"appService,omitempty"`
 	Args         string `json:"args,omitempty"`
-  DefaultsFrom string `json:"defaultsFrom,omitempty"`
-  Description  string `json:"description,omitempty"`
+	DefaultsFrom string `json:"defaultsFrom,omitempty"`
+	Description  string `json:"description,omitempty"`
 	Destination  string `json:"destination,omitempty"`
 	FullPath     string `json:"fullPath,omitempty"`
 	Generation   int    `json:"generation,omitempty"`

@@ -14,13 +14,13 @@ type MonitorSNMPDCAConfigList struct {
 
 type MonitorSNMPDCAConfig struct {
 	AgentType         string `json:"agentType,omitempty"`
-  AppService        string `json:"appService,omitempty"`
+	AppService        string `json:"appService,omitempty"`
 	Community         string `json:"community,omitempty"`
 	CPUCoefficient    string `json:"cpuCoefficient,omitempty"`
 	CPUThreshold      string `json:"cpuThreshold,omitempty"`
-  DefaultsFrom      string `json:"defaultsFrom,omitempty"`
-  Description       string `json:"description,omitempty"`
-  Destination       string `json:"destination,omitempty"`
+	DefaultsFrom      string `json:"defaultsFrom,omitempty"`
+	Description       string `json:"description,omitempty"`
+	Destination       string `json:"destination,omitempty"`
 	DiskCoefficient   string `json:"diskCoefficient,omitempty"`
 	DiskThreshold     string `json:"diskThreshold,omitempty"`
 	FullPath          string `json:"fullPath,omitempty"`

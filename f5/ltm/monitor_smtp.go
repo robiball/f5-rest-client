@@ -13,10 +13,10 @@ type MonitorSMTPConfigList struct {
 }
 
 type MonitorSMTPConfig struct {
-  AppService   string `json:"appService,omitempty"`
-  Debug        string `json:"debug,omitempty"`
-  DefaultsFrom string `json:"defaultsFrom,omitempty"`
-  Description  string `json:"description,omitempty"`
+	AppService   string `json:"appService,omitempty"`
+	Debug        string `json:"debug,omitempty"`
+	DefaultsFrom string `json:"defaultsFrom,omitempty"`
+	Description  string `json:"description,omitempty"`
 	Destination  string `json:"destination,omitempty,omitempty"`
 	Domain       string `json:"domain,omitempty,omitempty"`
 	FullPath     string `json:"fullPath,omitempty,omitempty"`

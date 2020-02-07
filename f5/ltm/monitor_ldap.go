@@ -13,12 +13,12 @@ type MonitorLDAPConfigList struct {
 }
 
 type MonitorLDAPConfig struct {
-  AppService          string `json:"appService,omitempty"`
+	AppService          string `json:"appService,omitempty"`
 	Base                string `json:"base,omitempty"`
 	ChaseReferrals      string `json:"chaseReferrals,omitempty"`
 	Debug               string `json:"debug,omitempty"`
-  DefaultsFrom        string `json:"defaultsFrom,omitempty"`
-  Description         string `json:"description,omitempty"`
+	DefaultsFrom        string `json:"defaultsFrom,omitempty"`
+	Description         string `json:"description,omitempty"`
 	Destination         string `json:"destination,omitempty"`
 	Filter              string `json:"filter,omitempty"`
 	FullPath            string `json:"fullPath,omitempty"`

@@ -13,10 +13,10 @@ type MonitorSOAPConfigList struct {
 }
 
 type MonitorSOAPConfig struct {
-  AppService     string `json:"appService,omitempty"`
+	AppService     string `json:"appService,omitempty"`
 	Debug          string `json:"debug,omitempty"`
-  DefaultsFrom   string `json:"defaultsFrom,omitempty"`
-  Description    string `json:"description,omitempty"`
+	DefaultsFrom   string `json:"defaultsFrom,omitempty"`
+	Description    string `json:"description,omitempty"`
 	Destination    string `json:"destination,omitempty"`
 	ExpectFault    string `json:"expectFault,omitempty"`
 	FullPath       string `json:"fullPath,omitempty"`

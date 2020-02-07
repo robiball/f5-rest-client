@@ -13,11 +13,11 @@ type MonitorFirepassConfigList struct {
 }
 
 type MonitorFirepassConfig struct {
-  AppService       string `json:"appService,omitempty"`
+	AppService       string `json:"appService,omitempty"`
 	Cipherlist       string `json:"cipherlist,omitempty"`
 	ConcurrencyLimit int    `json:"concurrencyLimit,omitempty"`
-  DefaultsFrom     string `json:"defaultsFrom,omitempty"`
-  Description      string `json:"description,omitempty"`
+	DefaultsFrom     string `json:"defaultsFrom,omitempty"`
+	Description      string `json:"description,omitempty"`
 	Destination      string `json:"destination,omitempty"`
 	FullPath         string `json:"fullPath,omitempty"`
 	Generation       int    `json:"generation,omitempty"`
