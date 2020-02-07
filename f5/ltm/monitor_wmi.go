@@ -13,22 +13,25 @@ type MonitorWMIConfigList struct {
 }
 
 type MonitorWMIConfig struct {
-	Agent       string `json:"agent,omitempty"`
-	Destination string `json:"destination,omitempty"`
-	FullPath    string `json:"fullPath,omitempty"`
-	Generation  int    `json:"generation,omitempty"`
-	Interval    int    `json:"interval,omitempty"`
-	Kind        string `json:"kind,omitempty"`
-	Method      string `json:"method,omitempty"`
-	Metrics     string `json:"metrics,omitempty"`
-	Name        string `json:"name,omitempty"`
-	Partition   string `json:"partition,omitempty"`
-	Post        string `json:"post,omitempty"`
-	SelfLink    string `json:"selfLink,omitempty"`
-	TimeUntilUp int    `json:"timeUntilUp,omitempty"`
-	Timeout     int    `json:"timeout,omitempty"`
-	TmCommand   string `json:"tmCommand,omitempty"`
-	URL         string `json:"url,omitempty"`
+	Agent        string `json:"agent,omitempty"`
+  AppService   string `json:"appService,omitempty"`
+  DefaultsFrom string `json:"defaultsFrom,omitempty"`
+  Description  string `json:"description,omitempty"`
+	Destination  string `json:"destination,omitempty"`
+	FullPath     string `json:"fullPath,omitempty"`
+	Generation   int    `json:"generation,omitempty"`
+	Interval     int    `json:"interval,omitempty"`
+	Kind         string `json:"kind,omitempty"`
+	Method       string `json:"method,omitempty"`
+	Metrics      string `json:"metrics,omitempty"`
+	Name         string `json:"name,omitempty"`
+	Partition    string `json:"partition,omitempty"`
+	Post         string `json:"post,omitempty"`
+	SelfLink     string `json:"selfLink,omitempty"`
+	TimeUntilUp  int    `json:"timeUntilUp,omitempty"`
+	Timeout      int    `json:"timeout,omitempty"`
+	TmCommand    string `json:"tmCommand,omitempty"`
+	URL          string `json:"url,omitempty"`
 }
 
 const MonitorWMIEndpoint = "/monitor/wmi"
