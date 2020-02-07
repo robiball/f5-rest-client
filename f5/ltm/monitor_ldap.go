@@ -13,20 +13,27 @@ type MonitorLDAPConfigList struct {
 }
 
 type MonitorLDAPConfig struct {
-	ChaseReferrals string `json:"chaseReferrals,omitempty"`
-	Debug          string `json:"debug,omitempty"`
-	Destination    string `json:"destination,omitempty"`
-	FullPath       string `json:"fullPath,omitempty"`
-	Generation     int    `json:"generation,omitempty"`
-	Interval       int    `json:"interval,omitempty"`
-	Kind           string `json:"kind,omitempty"`
-	ManualResume   string `json:"manualResume,omitempty"`
-	Name           string `json:"name,omitempty"`
-	Partition      string `json:"partition,omitempty"`
-	SelfLink       string `json:"selfLink,omitempty"`
-	TimeUntilUp    int    `json:"timeUntilUp,omitempty"`
-	Timeout        int    `json:"timeout,omitempty"`
-	UpInterval     int    `json:"upInterval,omitempty"`
+	AppService          string `json:"appService,omitempty"`
+	Base                string `json:"base,omitempty"`
+	ChaseReferrals      string `json:"chaseReferrals,omitempty"`
+	Debug               string `json:"debug,omitempty"`
+	DefaultsFrom        string `json:"defaultsFrom,omitempty"`
+	Description         string `json:"description,omitempty"`
+	Destination         string `json:"destination,omitempty"`
+	Filter              string `json:"filter,omitempty"`
+	FullPath            string `json:"fullPath,omitempty"`
+	Generation          int    `json:"generation,omitempty"`
+	Interval            int    `json:"interval,omitempty"`
+	Kind                string `json:"kind,omitempty"`
+	MandatoryAttributes string `json:"mandatoryAttributes,omitempty"`
+	ManualResume        string `json:"manualResume,omitempty"`
+	Name                string `json:"name,omitempty"`
+	Partition           string `json:"partition,omitempty"`
+	Security            string `json:"security,omitempty"`
+	SelfLink            string `json:"selfLink,omitempty"`
+	TimeUntilUp         int    `json:"timeUntilUp,omitempty"`
+	Timeout             int    `json:"timeout,omitempty"`
+	UpInterval          int    `json:"upInterval,omitempty"`
 }
 
 const MonitorLDAPEndpoint = "/monitor/ldap"

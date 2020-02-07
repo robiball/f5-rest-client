@@ -13,7 +13,10 @@ type MonitorPOP3ConfigList struct {
 }
 
 type MonitorPOP3Config struct {
+	AppService   string `json:"appService,omitempty"`
 	Debug        string `json:"debug,omitempty"`
+	DefaultsFrom string `json:"defaultsFrom,omitempty"`
+	Description  string `json:"description,omitempty"`
 	Destination  string `json:"destination,omitempty"`
 	FullPath     string `json:"fullPath,omitempty"`
 	Generation   int    `json:"generation,omitempty"`

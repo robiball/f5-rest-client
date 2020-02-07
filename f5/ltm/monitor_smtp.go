@@ -13,8 +13,12 @@ type MonitorSMTPConfigList struct {
 }
 
 type MonitorSMTPConfig struct {
-	Debug        string `json:"debug,omitempty,omitempty"`
+	AppService   string `json:"appService,omitempty"`
+	Debug        string `json:"debug,omitempty"`
+	DefaultsFrom string `json:"defaultsFrom,omitempty"`
+	Description  string `json:"description,omitempty"`
 	Destination  string `json:"destination,omitempty,omitempty"`
+	Domain       string `json:"domain,omitempty,omitempty"`
 	FullPath     string `json:"fullPath,omitempty,omitempty"`
 	Generation   int    `json:"generation,omitempty,omitempty"`
 	Interval     int    `json:"interval,omitempty,omitempty"`

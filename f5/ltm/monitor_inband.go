@@ -13,6 +13,9 @@ type MonitorInbandConfigList struct {
 }
 
 type MonitorInbandConfig struct {
+	AppService      string `json:"appService,omitempty"`
+	DefaultsFrom    string `json:"defaultsFrom,omitempty"`
+	Description     string `json:"description,omitempty"`
 	FailureInterval int    `json:"failureInterval,omitempty"`
 	Failures        int    `json:"failures,omitempty"`
 	FullPath        string `json:"fullPath,omitempty"`

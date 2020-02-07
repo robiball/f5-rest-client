@@ -13,6 +13,10 @@ type MonitorExternalConfigList struct {
 }
 
 type MonitorExternalConfig struct {
+	AppService   string `json:"appService,omitempty"`
+	Args         string `json:"args,omitempty"`
+	DefaultsFrom string `json:"defaultsFrom,omitempty"`
+	Description  string `json:"description,omitempty"`
 	Destination  string `json:"destination,omitempty"`
 	FullPath     string `json:"fullPath,omitempty"`
 	Generation   int    `json:"generation,omitempty"`
@@ -21,10 +25,12 @@ type MonitorExternalConfig struct {
 	ManualResume string `json:"manualResume,omitempty"`
 	Name         string `json:"name,omitempty"`
 	Partition    string `json:"partition,omitempty"`
+	Run          string `json:"run,omitempty"`
 	SelfLink     string `json:"selfLink,omitempty"`
 	TimeUntilUp  int    `json:"timeUntilUp,omitempty"`
 	Timeout      int    `json:"timeout,omitempty"`
 	UpInterval   int    `json:"upInterval,omitempty"`
+	UserDefined  string `json:"userDefined,omitempty"`
 }
 
 const MonitorExternalEndpoint = "/monitor/external"
