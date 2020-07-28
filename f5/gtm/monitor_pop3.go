@@ -4,7 +4,7 @@
 
 package gtm
 
-import "github.com/robiball/f5-rest-client/f5"
+import "github.com/e-XpertSolutions/f5-rest-client/f5"
 
 // MonitorPOP3List holds a list of MonitorPOP3 configuration.
 type MonitorPOP3List struct {

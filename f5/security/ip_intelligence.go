@@ -4,7 +4,7 @@
 
 package security
 
-import "github.com/robiball/f5-rest-client/f5"
+import "github.com/e-XpertSolutions/f5-rest-client/f5"
 
 // IPIntelligenceConfigList holds a list of IPIntelligence configuration.
 type IPIntelligenceConfigList struct {
