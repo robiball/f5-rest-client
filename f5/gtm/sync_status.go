@@ -4,7 +4,7 @@
 
 package gtm
 
-import "github.com/robiball/f5-rest-client/f5"
+import "github.com/e-XpertSolutions/f5-rest-client/f5"
 
 // SyncStatus holds the configuration of a single SyncStatus.
 type SyncStatus struct {
