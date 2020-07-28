@@ -5,7 +5,7 @@
 // Package ltm provides a REST client for the /tm/ltm F5 BigIP API.
 package ltm
 
-import "github.com/e-XpertSolutions/f5-rest-client/f5"
+import "github.com/robiball/f5-rest-client/f5"
 
 // BasePath is the base path of the LTM API.
 const BasePath = "mgmt/tm/ltm"
@@ -55,7 +55,6 @@ type LTM struct {
 	monitorSIP              MonitorSIPResource
 	monitorSMB              MonitorSMBResource
 	monitorSMTP             MonitorSMTPResource
-	monitorSNMPData         MonitorSNMPDataResource
 	monitorSNMPDCABase      MonitorSNMPDCABaseResource
 	monitorSNMPDCA          MonitorSNMPDCAResource
 	monitorSOAP             MonitorSOAPResource
@@ -113,7 +112,6 @@ func New(c *f5.Client) LTM {
 		monitorSIP:              MonitorSIPResource{c: c},
 		monitorSMB:              MonitorSMBResource{c: c},
 		monitorSMTP:             MonitorSMTPResource{c: c},
-		monitorSNMPData:         MonitorSNMPDataResource{c: c},
 		monitorSNMPDCABase:      MonitorSNMPDCABaseResource{c: c},
 		monitorSNMPDCA:          MonitorSNMPDCAResource{c: c},
 		monitorSOAP:             MonitorSOAPResource{c: c},
@@ -284,10 +282,6 @@ func (ltm LTM) MonitorSMB() *MonitorSMBResource {
 
 func (ltm LTM) MonitorSMTP() *MonitorSMTPResource {
 	return &ltm.monitorSMTP
-}
-
-func (ltm LTM) MonitorSNMPData() *MonitorSNMPDataResource {
-	return &ltm.monitorSNMPData
 }
 
 func (ltm LTM) MonitorSNMPDCABase() *MonitorSNMPDCABaseResource {

@@ -4,7 +4,7 @@
 
 package gtm
 
-import "github.com/e-XpertSolutions/f5-rest-client/f5"
+import "github.com/robiball/f5-rest-client/f5"
 
 // MonitorFirepassList holds a list of MonitorFirepass uration.
 type MonitorFirepassList struct {

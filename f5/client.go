@@ -56,6 +56,8 @@ type Client struct {
 	makeAuth authFunc
 	t        *http.Transport
 
+	username, password string
+
 	token          string
 	tokenExpiresAt time.Time
 
@@ -69,9 +71,11 @@ type Client struct {
 func NewBasicClient(baseURL, user, password string) (*Client, error) {
 	t := &http.Transport{}
 	return &Client{
-		c:       http.Client{Transport: t, Timeout: DefaultTimeout},
-		baseURL: baseURL,
-		t:       t,
+		c:        http.Client{Transport: t, Timeout: DefaultTimeout},
+		baseURL:  baseURL,
+		t:        t,
+		username: user,
+		password: password,
 		makeAuth: authFunc(func(req *http.Request) error {
 			req.SetBasicAuth(user, password)
 			return nil
@@ -143,7 +147,13 @@ func CreateToken(baseURL, user, password, loginProvName string) (string, time.Ti
 // baseURL is the base URL of the F5 API server.
 func NewTokenClient(baseURL, user, password, loginProvName string) (*Client, error) {
 	t := &http.Transport{}
-	c := Client{c: http.Client{Transport: t, Timeout: DefaultTimeout}, baseURL: baseURL, t: t}
+	c := Client{
+		c:        http.Client{Transport: t, Timeout: DefaultTimeout},
+		baseURL:  baseURL,
+		t:        t,
+		username: user,
+		password: password,
+	}
 
 	// Create auth function for token based authentication.
 	c.makeAuth = authFunc(func(req *http.Request) (err error) {
@@ -204,6 +214,16 @@ func (c *Client) RevokeToken() error {
 	return nil
 }
 
+// SetTimeout sets the HTTP timeout for the underlying HTTP client.
+func (c *Client) SetTimeout(timeout time.Duration) {
+	c.c.Timeout = timeout
+}
+
+// SetHTTPClient sets the underlying HTTP used to make requests.
+func (c *Client) SetHTTPClient(client http.Client) {
+	c.c = client
+}
+
 // UseProxy configures a proxy to use for outbound connections
 func (c *Client) UseProxy(proxy string) error {
 	proxyURL, err := url.Parse(proxy)
@@ -235,11 +255,16 @@ func (c *Client) MakeRequest(method, restPath string, data interface{}) (*http.R
 		err error
 	)
 	if data != nil {
-		bs, err := json.Marshal(data)
-		if err != nil {
-			return nil, fmt.Errorf("failed to marshal data into json: %v", err)
+		switch v := data.(type) {
+		case string:
+			req, err = http.NewRequest(method, c.makeURL(restPath), strings.NewReader(v))
+		default:
+			bs, err := json.Marshal(data)
+			if err != nil {
+				return nil, fmt.Errorf("failed to marshal data into json: %v", err)
+			}
+			req, err = http.NewRequest(method, c.makeURL(restPath), bytes.NewBuffer(bs))
 		}
-		req, err = http.NewRequest(method, c.makeURL(restPath), bytes.NewBuffer(bs))
 	} else {
 		req, err = http.NewRequest(method, c.makeURL(restPath), nil)
 	}

@@ -6,8 +6,14 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
+	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/pkg/sftp"
+	"golang.org/x/crypto/ssh"
 )
 
 // Paths for file upload.
@@ -30,8 +36,53 @@ const (
 // MaxChunkSize is the maximum chunk size allowed by the iControl REST
 const MaxChunkSize = 1048576
 
+// FileTransferOptions contains SSH configuration for downloading and uploading
+// UCS using SFTP.
+type FileTransferOptions struct {
+	UseSFTP      bool
+	ClientConfig *ssh.ClientConfig
+}
+
+// FileTransferOption is a function type to set the transfer options.
+type FileTransferOption func(*FileTransferOptions)
+
+// WithSFTP sets the ssh configuration for file transfer.
+func WithSFTP(config *ssh.ClientConfig) FileTransferOption {
+	return func(o *FileTransferOptions) {
+		o.UseSFTP = true
+		o.ClientConfig = config
+	}
+}
+
 // DownloadUCS downloads an UCS file and writes its content to w.
-func (c *Client) DownloadUCS(w io.Writer, filename string) (n int64, err error) {
+func (c *Client) DownloadUCS(w io.Writer, filename string, opts ...FileTransferOption) (n int64, err error) {
+
+	options := FileTransferOptions{}
+	for _, o := range opts {
+		o(&options)
+	}
+
+	if options.UseSFTP {
+		if options.ClientConfig == nil {
+			fn := func(user, instruction string, questions []string, echos []bool) (answers []string, err error) {
+				for _, q := range questions {
+					if strings.Contains(q, "Password") {
+						return []string{c.password}, nil
+					}
+				}
+				return []string{}, nil
+			}
+			options.ClientConfig = &ssh.ClientConfig{
+				User: c.username,
+				Auth: []ssh.AuthMethod{
+					ssh.KeyboardInteractive(fn),
+				},
+				HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+			}
+		}
+		return c.downloadUsingSSH(w, filename, options)
+	}
+
 	// BigIP 12.x.x only support download requests with a Content-Range header,
 	// thus, it is required to know the size of the file to download beforehand.
 	//
@@ -85,6 +136,36 @@ func (c *Client) DownloadUCS(w io.Writer, filename string) (n int64, err error) 
 		return 0, fmt.Errorf("cannot download ucs file: %v", err)
 	}
 	return
+}
+
+func (c *Client) downloadUsingSSH(w io.Writer, filename string, opts FileTransferOptions) (int64, error) {
+
+	path := string(os.PathSeparator) + filepath.Join("var", "local", "ucs", filename)
+
+	parsedURL, err := url.Parse(c.baseURL)
+	if err != nil {
+		return 0, fmt.Errorf("downloadUsingSSH: cannot parse baseURL: %w", err)
+	}
+
+	conn, err := ssh.Dial("tcp", parsedURL.Hostname()+":22", opts.ClientConfig)
+	if err != nil {
+		return 0, fmt.Errorf("downloadUsingSSH: cannot connect via ssh: %w", err)
+	}
+	defer conn.Close()
+
+	sftpClient, err := sftp.NewClient(conn)
+	if err != nil {
+		return 0, fmt.Errorf("downloadUsingSSH: cannot create sftp client: %w", err)
+	}
+	defer sftpClient.Close()
+
+	file, err := sftpClient.Open(path)
+	if err != nil {
+		return 0, fmt.Errorf("downloadUsingSSH: cannot open file %q: %w", filename, err)
+	}
+	defer file.Close()
+
+	return io.Copy(w, file)
 }
 
 // DownloadImage downloads BIG-IP images from the API and writes it to w.
@@ -210,12 +291,43 @@ func (c *Client) UploadImage(r io.Reader, filename string, filesize int64) (*Upl
 // request.
 //
 // This method returns the latest upload response received.
-func (c *Client) UploadUCS(r io.Reader, filename string, filesize int64) (*UploadResponse, error) {
-	return c.upload(r, PathUploadUCS, filename, filesize)
+func (c *Client) UploadUCS(r io.Reader, filename string, filesize int64, opts ...FileTransferOption) (*UploadResponse, error) {
+	return c.upload(r, PathUploadUCS, filename, filesize, opts...)
 }
 
-func (c *Client) upload(r io.Reader, restPath, filename string, filesize int64) (*UploadResponse, error) {
+func (c *Client) upload(r io.Reader, restPath, filename string, filesize int64, opts ...FileTransferOption) (*UploadResponse, error) {
 	var uploadResp UploadResponse
+
+	options := FileTransferOptions{}
+	for _, o := range opts {
+		o(&options)
+	}
+
+	if options.UseSFTP {
+		if options.ClientConfig == nil {
+			fn := func(user, instruction string, questions []string, echos []bool) (answers []string, err error) {
+				for _, q := range questions {
+					if strings.Contains(q, "Password") {
+						return []string{c.password}, nil
+					}
+				}
+				return []string{}, nil
+			}
+			options.ClientConfig = &ssh.ClientConfig{
+				User: c.username,
+				Auth: []ssh.AuthMethod{
+					ssh.KeyboardInteractive(fn),
+				},
+				HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+			}
+		}
+		_, err := c.uploadUsingSSH(r, filename, options)
+		if err != nil {
+			return nil, err
+		}
+		return &uploadResp, nil
+	}
+
 	for bytesSent := int64(0); bytesSent < filesize; {
 		var chunk int64
 		if remainingBytes := filesize - bytesSent; remainingBytes >= 512*1024 {
@@ -250,6 +362,41 @@ func (c *Client) upload(r io.Reader, restPath, filename string, filesize int64) 
 		bytesSent += chunk
 	}
 	return &uploadResp, nil
+}
+
+func (c *Client) uploadUsingSSH(r io.Reader, filename string, opts FileTransferOptions) (int64, error) {
+
+	path := string(os.PathSeparator) + filepath.Join("var", "local", "ucs", filename)
+
+	parsedURL, err := url.Parse(c.baseURL)
+	if err != nil {
+		return 0, fmt.Errorf("uploadUsingSSH: cannot parse baseURL: %w", err)
+	}
+
+	conn, err := ssh.Dial("tcp", parsedURL.Hostname()+":22", opts.ClientConfig)
+	if err != nil {
+		return 0, fmt.Errorf("uploadUsingSSH: cannot connect via ssh: %w", err)
+	}
+	defer conn.Close()
+
+	sftpClient, err := sftp.NewClient(conn)
+	if err != nil {
+		return 0, fmt.Errorf("uploadUsingSSH: cannot create sftp client: %w", err)
+	}
+	defer sftpClient.Close()
+
+	dstFile, err := sftpClient.Create(path)
+	if err != nil {
+		return 0, fmt.Errorf("uploadUsingSSH: cannot create file  %q on remote host: %w", filename, err)
+	}
+	defer dstFile.Close()
+
+	n, err := dstFile.ReadFrom(r)
+	if err != nil {
+		return n, fmt.Errorf("uploadUsingSSH: cannot copy reader content to the file %q: %w", filename, err)
+	}
+
+	return n, nil
 }
 
 // makeUploadRequest constructs a single upload request.

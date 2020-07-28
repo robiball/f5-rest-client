@@ -4,7 +4,7 @@
 
 package vcmp
 
-import "github.com/e-XpertSolutions/f5-rest-client/f5"
+import "github.com/robiball/f5-rest-client/f5"
 
 // HealthConfigList holds a list of Health configuration.
 type HealthConfigList struct {

@@ -7,8 +7,8 @@ package gtm_test
 import (
 	"log"
 
-	"github.com/e-XpertSolutions/f5-rest-client/f5"
-	"github.com/e-XpertSolutions/f5-rest-client/f5/gtm"
+	"github.com/robiball/f5-rest-client/f5"
+	"github.com/robiball/f5-rest-client/f5/gtm"
 )
 
 func Example() {

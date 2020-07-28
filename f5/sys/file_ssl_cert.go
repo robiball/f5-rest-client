@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/e-XpertSolutions/f5-rest-client/f5"
+	"github.com/robiball/f5-rest-client/f5"
 )
 
 // FileSSLCertConfigList holds a list of FileSSLCert configuration.
@@ -207,7 +207,7 @@ func (r *FileSSLCertResource) EditFromFile(name string, certPEMFile io.Reader, f
 		"source-path": "file:" + uploadResp.LocalFilePath,
 	}
 	if err := r.c.ModQuery("PUT", BasePath+FileSSLCertEndpoint+"/"+name+".crt", data); err != nil {
-		return fmt.Errorf("failed to update imported crl file: %v", err)
+		return fmt.Errorf("failed to update imported certificate file: %v", err)
 	}
 	return nil
 }
