@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/BurntSushi/toml"
-	"github.com/robiball/f5-rest-client/f5"
+	"github.com/e-XpertSolutions/f5-rest-client/f5"
 	"github.com/howeyc/gopass"
 
 	"github.com/urfave/cli"
