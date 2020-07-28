@@ -4,7 +4,7 @@
 
 package gtm
 
-import "github.com/robiball/f5-rest-client/f5"
+import "github.com/e-XpertSolutions/f5-rest-client/f5"
 
 // MonitorICMPList holds a list of MonitorICMP uration.
 type MonitorICMPList struct {

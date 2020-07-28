@@ -4,7 +4,7 @@
 
 package gtm
 
-import "github.com/robiball/f5-rest-client/f5"
+import "github.com/e-XpertSolutions/f5-rest-client/f5"
 
 // WideipSrvEndpoint represents the REST resource for managing WideipSrv.
 const WideipSrvEndpoint = "/wideip/srv"

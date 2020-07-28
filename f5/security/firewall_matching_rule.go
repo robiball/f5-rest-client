@@ -4,7 +4,7 @@
 
 package security
 
-import "github.com/robiball/f5-rest-client/f5"
+import "github.com/e-XpertSolutions/f5-rest-client/f5"
 
 // FirewallMatchingRuleConfigList holds a list of FirewallMatchingRule configuration.
 type FirewallMatchingRuleConfigList struct {
